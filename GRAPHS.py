@@ -1,20 +1,30 @@
-# Directed Graph
-graph ={  'S':['A','B'],
-          'A':['B','C'],
-          'B':['C'],
-          'C':['D','G'],
-          'D':['G'],
-          'G':set()
-          }
-          
-          
+# Graph as a dictionary
+graph = {
+    'S': {'A': 3, 'B': 1},
+    'A': {'B': 2, 'C': 2},
+    'B': {'C': 3},
+    'C': {'D': 4, 'G': 4},
+    'D': {'G': 1},
+    'G': {}
+}
 
-# Weighted Graph with costs
-#   ....**NODE:COST**....
+# Heuristic values
+heuristics = {
+    'S': 7,
+    'A': 5,
+    'B': 7,
+    'C': 4,
+    'D': 1,
+    'G': 0
+}
 
-graph = {'S':{'A':3, 'B':1},
-         'A':{'B':2, 'C':2},
-         'C':{'D':4, 'G':4},
-         'B':{'C':3},
-         'D':{'G':1}   
-        }
+# Print the graph structure with costs and heuristic values
+for node in graph:
+    neighbors = graph[node]
+    heuristic_value = heuristics[node]
+    print(f"Node: {node}, Heuristic: {heuristic_value}")
+
+    for neighbor, cost in neighbors.items():
+        print(f"  Neighbor: {neighbor}, Cost: {cost}")
+
+    print()
